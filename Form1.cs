@@ -2,7 +2,6 @@
 using RestSharp;
 using System;
 using System.Windows.Forms;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -77,6 +76,16 @@ namespace WeatherForecast
                 }
                 catch { }
             }
+        }
+
+        private void CityToWeatherForecast()
+        {
+
+        }
+
+        private void cboxCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
