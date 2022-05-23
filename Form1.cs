@@ -4,6 +4,9 @@ using System;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using System.Linq;
+using WeatherForecast.Properties;
 
 namespace WeatherForecast
 {
@@ -29,7 +32,6 @@ namespace WeatherForecast
             request.AddHeader("apikey", "bxfF4nSrkpHHHjW8mWGThEP3IN5oNuWV"); //apikey for authentication
 
             await Task.Run(()=> CountryIsoToCities(request, CountryNameToCountryIso(request, countryName))); //run methods for get cities
-
             foreach (string item in cityNames) //add cities to combobox
             {
                 if (!cboxCity.Items.Contains(item))
@@ -50,11 +52,11 @@ namespace WeatherForecast
             dynamic cityIsoResponse = JsonConvert.DeserializeObject(countryToIsoClient.Execute(request).Content);
             foreach (dynamic i in cityIsoResponse)
             {
-                try
-                {
+                //try
+                //{
                     countryIsoCode = i.alpha3code; //getting iso code by country
-                }
-                catch { }
+                //}
+                //catch { }
             }
             return countryIsoCode;
         }
@@ -78,14 +80,48 @@ namespace WeatherForecast
             }
         }
 
-        private void CityToWeatherForecast()
+        private void CityToWeatherForecast(string cityName)
         {
+            
+            string apiKey = "ade8d3238fea9c28b48cfdbcf3dbcefb";
+            string connection = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&mode=xml&lang=en&units=metric&appid="+apiKey;
+            XDocument weather = XDocument.Load(connection);
+            string degree = weather.Descendants("temperature").ElementAt(0).Attribute("value").Value;
+            lblDegree.Text = degree + "°";
+            string state = weather.Descendants("weather").ElementAt(0).Attribute("value").Value;
+            lblWeather.Text = state;
+            string wind = weather.Descendants("speed").ElementAt(0).Attribute("value").Value;
+            lblWind.Text = wind+" m/s";
+            string humidity = weather.Descendants("humidity").ElementAt(0).Attribute("value").Value;
+            lblHumidity.Text = humidity+" %";
+            string feelsLike = weather.Descendants("feels_like").ElementAt(0).Attribute("value").Value;
+            lblFeelsLike.Text = feelsLike+ "°";
+            string pressure = weather.Descendants("pressure").ElementAt(0).Attribute("value").Value;
+            lblPressure.Text = pressure + " hPa";
+            if (state.Contains("broken"))
+                pboxWeather.Image = Resources.broken;
+            else if (state.Contains("cloud"))
+                pboxWeather.Image = Resources.cloudly;
+            else if (state.Contains("snow"))
+                pboxWeather.Image = Resources.snowy;
+            else if (state.Contains("rain"))
+                pboxWeather.Image = Resources.rainy;
+            else if (state.Contains("wind"))
+                pboxWeather.Image = Resources.windy;
+            else if (state.Contains("storm"))
+                pboxWeather.Image = Resources.storm;
+            else
+                pboxWeather.Image = Resources.clear;
 
         }
 
         private void cboxCity_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string cityName = cboxCity.Text;
+            string countryName = cboxCountry.Text;
+            gboxWeather.Visible = true;
+            lblCity.Text = cityName + ", " + countryName;
+            CityToWeatherForecast(cityName);
         }
     }
 }

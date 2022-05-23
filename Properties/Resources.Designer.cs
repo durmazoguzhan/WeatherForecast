@@ -63,6 +63,16 @@ namespace WeatherForecast.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap broken {
+            get {
+                object obj = ResourceManager.GetObject("broken", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clear {
             get {
                 object obj = ResourceManager.GetObject("clear", resourceCulture);
@@ -96,6 +106,16 @@ namespace WeatherForecast.Properties {
         internal static System.Drawing.Bitmap snowy {
             get {
                 object obj = ResourceManager.GetObject("snowy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap storm {
+            get {
+                object obj = ResourceManager.GetObject("storm", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -35,17 +35,20 @@ namespace WeatherForecast
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.pboxWeather = new System.Windows.Forms.PictureBox();
-            this.lblDegree = new System.Windows.Forms.Label();
-            this.lblWeather = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.gboxWeather = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblWind = new System.Windows.Forms.Label();
-            this.lblHumidity = new System.Windows.Forms.Label();
-            this.lblPrecipitation = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblFeelsLike = new System.Windows.Forms.Label();
+            this.lblHumidity = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblPressure = new System.Windows.Forms.Label();
+            this.lblWind = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.lblWeather = new System.Windows.Forms.Label();
+            this.lblDegree = new System.Windows.Forms.Label();
+            this.pboxWeather = new System.Windows.Forms.PictureBox();
+            this.gboxWeather.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxWeather)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +64,6 @@ namespace WeatherForecast
             "Algeria",
             "Andorra",
             "Angola",
-            "Antigua & Deps",
             "Argentina",
             "Armenia",
             "Australia",
@@ -77,7 +79,6 @@ namespace WeatherForecast
             "Benin",
             "Bhutan",
             "Bolivia",
-            "Bosnia Herzegovina",
             "Botswana",
             "Brazil",
             "Brunei",
@@ -87,7 +88,6 @@ namespace WeatherForecast
             "Cambodia",
             "Cameroon",
             "Canada",
-            "Cape Verde",
             "Central African Rep",
             "Chad",
             "Chile",
@@ -95,7 +95,6 @@ namespace WeatherForecast
             "Colombia",
             "Comoros",
             "Congo",
-            "Congo {Democratic Rep}",
             "Costa Rica",
             "Croatia",
             "Cuba",
@@ -135,7 +134,7 @@ namespace WeatherForecast
             "Indonesia",
             "Iran",
             "Iraq",
-            "Ireland {Republic}",
+            "Ireland",
             "Israel",
             "Italy",
             "Ivory Coast",
@@ -145,8 +144,7 @@ namespace WeatherForecast
             "Kazakhstan",
             "Kenya",
             "Kiribati",
-            "Korea North",
-            "Korea South",
+            "Korea",
             "Kosovo",
             "Kuwait",
             "Kyrgyzstan",
@@ -172,12 +170,10 @@ namespace WeatherForecast
             "Mexico",
             "Micronesia",
             "Moldova",
-            "Monaco",
             "Mongolia",
             "Montenegro",
             "Morocco",
             "Mozambique",
-            "Myanmar, {Burma}",
             "Namibia",
             "Nauru",
             "Nepal",
@@ -201,12 +197,8 @@ namespace WeatherForecast
             "Romania",
             "Russian Federation",
             "Rwanda",
-            "St Kitts & Nevis",
-            "St Lucia",
-            "Saint Vincent & the Grenadines",
             "Samoa",
             "San Marino",
-            "Sao Tome & Principe",
             "Saudi Arabia",
             "Senegal",
             "Serbia",
@@ -233,7 +225,6 @@ namespace WeatherForecast
             "Thailand",
             "Togo",
             "Tonga",
-            "Trinidad & Tobago",
             "Tunisia",
             "Turkey",
             "Turkmenistan",
@@ -246,7 +237,6 @@ namespace WeatherForecast
             "Uruguay",
             "Uzbekistan",
             "Vanuatu",
-            "Vatican City",
             "Venezuela",
             "Vietnam",
             "Yemen",
@@ -255,6 +245,7 @@ namespace WeatherForecast
             this.cboxCountry.Location = new System.Drawing.Point(50, 46);
             this.cboxCountry.Name = "cboxCountry";
             this.cboxCountry.Size = new System.Drawing.Size(193, 24);
+            this.cboxCountry.Sorted = true;
             this.cboxCountry.TabIndex = 0;
             this.cboxCountry.SelectedIndexChanged += new System.EventHandler(this.cboxCountry_SelectedIndexChanged);
             // 
@@ -286,11 +277,11 @@ namespace WeatherForecast
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(340, 23);
+            this.label2.Location = new System.Drawing.Point(321, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 17);
+            this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "City";
+            this.label2.Text = "City/State";
             // 
             // progressBar1
             // 
@@ -300,125 +291,157 @@ namespace WeatherForecast
             this.progressBar1.TabIndex = 3;
             this.progressBar1.Visible = false;
             // 
-            // pboxWeather
+            // gboxWeather
             // 
-            this.pboxWeather.Image = global::WeatherForecast.Properties.Resources.clear;
-            this.pboxWeather.Location = new System.Drawing.Point(53, 134);
-            this.pboxWeather.Name = "pboxWeather";
-            this.pboxWeather.Size = new System.Drawing.Size(190, 190);
-            this.pboxWeather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pboxWeather.TabIndex = 4;
-            this.pboxWeather.TabStop = false;
-            // 
-            // lblDegree
-            // 
-            this.lblDegree.AutoSize = true;
-            this.lblDegree.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDegree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblDegree.Location = new System.Drawing.Point(290, 198);
-            this.lblDegree.Name = "lblDegree";
-            this.lblDegree.Size = new System.Drawing.Size(184, 63);
-            this.lblDegree.TabIndex = 5;
-            this.lblDegree.Text = "26.33°";
-            // 
-            // lblWeather
-            // 
-            this.lblWeather.AutoSize = true;
-            this.lblWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWeather.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblWeather.Location = new System.Drawing.Point(296, 261);
-            this.lblWeather.Name = "lblWeather";
-            this.lblWeather.Size = new System.Drawing.Size(72, 25);
-            this.lblWeather.TabIndex = 6;
-            this.lblWeather.Text = "Snowy";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(72, 373);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Wind";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label5.Location = new System.Drawing.Point(72, 409);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Humidity";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(258, 373);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 20);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Precipitation";
+            this.gboxWeather.Controls.Add(this.label7);
+            this.gboxWeather.Controls.Add(this.label6);
+            this.gboxWeather.Controls.Add(this.lblFeelsLike);
+            this.gboxWeather.Controls.Add(this.lblHumidity);
+            this.gboxWeather.Controls.Add(this.label5);
+            this.gboxWeather.Controls.Add(this.lblPressure);
+            this.gboxWeather.Controls.Add(this.lblWind);
+            this.gboxWeather.Controls.Add(this.label3);
+            this.gboxWeather.Controls.Add(this.lblCity);
+            this.gboxWeather.Controls.Add(this.lblWeather);
+            this.gboxWeather.Controls.Add(this.lblDegree);
+            this.gboxWeather.Controls.Add(this.pboxWeather);
+            this.gboxWeather.Location = new System.Drawing.Point(12, 113);
+            this.gboxWeather.Name = "gboxWeather";
+            this.gboxWeather.Size = new System.Drawing.Size(479, 350);
+            this.gboxWeather.TabIndex = 8;
+            this.gboxWeather.TabStop = false;
+            this.gboxWeather.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label7.Location = new System.Drawing.Point(258, 409);
+            this.label7.Location = new System.Drawing.Point(243, 296);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 20);
-            this.label7.TabIndex = 7;
+            this.label7.TabIndex = 12;
             this.label7.Text = "Feels Like";
             // 
-            // lblWind
+            // label6
             // 
-            this.lblWind.AutoSize = true;
-            this.lblWind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblWind.Location = new System.Drawing.Point(131, 373);
-            this.lblWind.Name = "lblWind";
-            this.lblWind.Size = new System.Drawing.Size(81, 20);
-            this.lblWind.TabIndex = 7;
-            this.lblWind.Text = "0.00 m/s";
-            // 
-            // lblHumidity
-            // 
-            this.lblHumidity.AutoSize = true;
-            this.lblHumidity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHumidity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblHumidity.Location = new System.Drawing.Point(161, 409);
-            this.lblHumidity.Name = "lblHumidity";
-            this.lblHumidity.Size = new System.Drawing.Size(51, 20);
-            this.lblHumidity.TabIndex = 7;
-            this.lblHumidity.Text = "00 %";
-            // 
-            // lblPrecipitation
-            // 
-            this.lblPrecipitation.AutoSize = true;
-            this.lblPrecipitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecipitation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblPrecipitation.Location = new System.Drawing.Point(379, 373);
-            this.lblPrecipitation.Name = "lblPrecipitation";
-            this.lblPrecipitation.Size = new System.Drawing.Size(51, 20);
-            this.lblPrecipitation.TabIndex = 7;
-            this.lblPrecipitation.Text = "00 %";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label6.Location = new System.Drawing.Point(243, 260);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(85, 20);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Pressure";
             // 
             // lblFeelsLike
             // 
             this.lblFeelsLike.AutoSize = true;
             this.lblFeelsLike.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFeelsLike.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblFeelsLike.Location = new System.Drawing.Point(368, 409);
+            this.lblFeelsLike.Location = new System.Drawing.Point(359, 296);
             this.lblFeelsLike.Name = "lblFeelsLike";
             this.lblFeelsLike.Size = new System.Drawing.Size(62, 20);
-            this.lblFeelsLike.TabIndex = 7;
+            this.lblFeelsLike.TabIndex = 14;
             this.lblFeelsLike.Text = "00.00°";
+            // 
+            // lblHumidity
+            // 
+            this.lblHumidity.AutoSize = true;
+            this.lblHumidity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHumidity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblHumidity.Location = new System.Drawing.Point(146, 296);
+            this.lblHumidity.Name = "lblHumidity";
+            this.lblHumidity.Size = new System.Drawing.Size(51, 20);
+            this.lblHumidity.TabIndex = 15;
+            this.lblHumidity.Text = "00 %";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label5.Location = new System.Drawing.Point(57, 296);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 20);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Humidity";
+            // 
+            // lblPressure
+            // 
+            this.lblPressure.AutoSize = true;
+            this.lblPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPressure.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblPressure.Location = new System.Drawing.Point(334, 260);
+            this.lblPressure.Name = "lblPressure";
+            this.lblPressure.Size = new System.Drawing.Size(87, 20);
+            this.lblPressure.TabIndex = 17;
+            this.lblPressure.Text = "0000 hPa";
+            // 
+            // lblWind
+            // 
+            this.lblWind.AutoSize = true;
+            this.lblWind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblWind.Location = new System.Drawing.Point(116, 260);
+            this.lblWind.Name = "lblWind";
+            this.lblWind.Size = new System.Drawing.Size(81, 20);
+            this.lblWind.TabIndex = 18;
+            this.lblWind.Text = "0.00 m/s";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label3.Location = new System.Drawing.Point(57, 260);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Wind";
+            // 
+            // lblCity
+            // 
+            this.lblCity.AutoSize = true;
+            this.lblCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblCity.Location = new System.Drawing.Point(273, 61);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(115, 24);
+            this.lblCity.TabIndex = 10;
+            this.lblCity.Text = "City, Country";
+            // 
+            // lblWeather
+            // 
+            this.lblWeather.AutoSize = true;
+            this.lblWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWeather.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblWeather.Location = new System.Drawing.Point(272, 148);
+            this.lblWeather.Name = "lblWeather";
+            this.lblWeather.Size = new System.Drawing.Size(72, 25);
+            this.lblWeather.TabIndex = 11;
+            this.lblWeather.Text = "Snowy";
+            // 
+            // lblDegree
+            // 
+            this.lblDegree.AutoSize = true;
+            this.lblDegree.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDegree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblDegree.Location = new System.Drawing.Point(266, 85);
+            this.lblDegree.Name = "lblDegree";
+            this.lblDegree.Size = new System.Drawing.Size(184, 63);
+            this.lblDegree.TabIndex = 9;
+            this.lblDegree.Text = "00.00°";
+            // 
+            // pboxWeather
+            // 
+            this.pboxWeather.Image = global::WeatherForecast.Properties.Resources.clear;
+            this.pboxWeather.Location = new System.Drawing.Point(29, 21);
+            this.pboxWeather.Name = "pboxWeather";
+            this.pboxWeather.Size = new System.Drawing.Size(190, 190);
+            this.pboxWeather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboxWeather.TabIndex = 8;
+            this.pboxWeather.TabStop = false;
             // 
             // Form1
             // 
@@ -426,17 +449,7 @@ namespace WeatherForecast
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(503, 475);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.lblFeelsLike);
-            this.Controls.Add(this.lblHumidity);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblPrecipitation);
-            this.Controls.Add(this.lblWind);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblWeather);
-            this.Controls.Add(this.lblDegree);
-            this.Controls.Add(this.pboxWeather);
+            this.Controls.Add(this.gboxWeather);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -448,6 +461,8 @@ namespace WeatherForecast
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weather Forecast";
+            this.gboxWeather.ResumeLayout(false);
+            this.gboxWeather.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxWeather)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -461,17 +476,19 @@ namespace WeatherForecast
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.PictureBox pboxWeather;
-        private System.Windows.Forms.Label lblDegree;
-        private System.Windows.Forms.Label lblWeather;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox gboxWeather;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblWind;
-        private System.Windows.Forms.Label lblHumidity;
-        private System.Windows.Forms.Label lblPrecipitation;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblFeelsLike;
+        private System.Windows.Forms.Label lblHumidity;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPressure;
+        private System.Windows.Forms.Label lblWind;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCity;
+        private System.Windows.Forms.Label lblWeather;
+        private System.Windows.Forms.Label lblDegree;
+        private System.Windows.Forms.PictureBox pboxWeather;
     }
 }
 
